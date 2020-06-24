@@ -6,6 +6,10 @@ function startQuiz(params) {
 
 }
 
+function timeKeeper(params) {
+
+}
+
 function moveNextQ(params) {
 
 }
@@ -18,6 +22,4 @@ function kpscore(params) {
 
 }
 
-function writeHighScore() {
-
-}
+function writeHighScore()
