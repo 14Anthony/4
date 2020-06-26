@@ -6,42 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="Triviastyles.css" rel="stylesheet">
+    <script defer src="triviascript.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-
-    <body>
-        <header>
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4">Survey Says!!!</h1>
-                    <p class="lead">Welcome to your timed quiz on JavaScipt Fundamentals. High Scores will be kept</p>
-                </div>
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Survey Says!!!</h1>
+                <p class="lead">Welcome to your timed quiz on JavaScipt Fundamentals. High Scores will be kept</p>
             </div>
-        </header>
-        <div class="container">
-            <!-- create a container to hold the question bucket -->
-            <!-- creation of a start button  "GIVEN I am taking a code quiz WHEN I     click the start button"-->
-            <div id="question-container " class="hide">
-
-
-                <!-- Here is the need for the space for the questions -->
-                <div id="questions">Questions to ask</div>
-            </div>
-            <div id="answer-buttons" class="btn-answerGrid">
-                <!-- there will be a need for additional answer buttons to click on per the assets page,  now the question is whether or not to use those as the actual answer or next to the answer. -->
-                <button class="btn">A1</button>
-                <button class="btn">A2</button>
-                <button class="btn">A3</button>
-                <button class="btn">A4</button>
-            </div>
-            <div class="operation">
-                <button id="start-btn" class='start-btn btn'>Start</button>
-                <div id=timeLeft></div>
         </div>
-        </div>
+    </header>
+    <div class="container">
+        <!-- create a container to hold the question bucket -->
+        <!-- creation of a start button  "GIVEN I am taking a code quiz WHEN I     click the start button"-->
+        <div id="question-container " class="hide">
 
-    </body>
+
+            <!-- Here is the need for the space for the questions -->
+            <div id="questions">Questions to ask</div>
+        </div>
+        <div id="answer-buttons" class="btn-answerGrid">
+            <!-- there will be a need for additional answer buttons to click on per the assets page,  now the question is whether or not to use those as the actual answer or next to the answer. -->
+            <button class="btn">A1</button>
+            <button class="btn">A2</button>
+            <button class="btn">A3</button>
+            <button class="btn">A4</button>
+        </div>
+        <div class="operation">
+            <button id="start-btn" class='start-btn btn'>Start</button>
+            <div id=timeLeft></div>
+    </div>
+    </div>
+
+</body>
 
 </html>
