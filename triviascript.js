@@ -1,4 +1,4 @@
-const startBtn = document.getElementById('start=btn')
+const startBtn = document.getElementById('start-btn')
 
 startBtn.addEventlistener('click', startQuiz)
 
@@ -23,3 +23,5 @@ function kpscore(params) {
 }
 
 function writeHighScore()
+
+create and
