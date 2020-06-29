@@ -1,27 +1,27 @@
-const startBtn = document.getElementById('start-btn')
+const startBtn = document.getElementById('start-btn');
 
-startBtn.addEventlistener('click', startQuiz)
+startBtn.addEventListener('click', startQuiz);
 
-function startQuiz(params) {
-
+function startQuiz() {
+    console.log('Begin the game')
 }
 
-function timeKeeper(params) {
+// function timeKeeper(params) {
 
-}
+// }
 
-function moveNextQ(params) {
+// function moveNextQ(params) {
 
-}
+// }
 
-function pickAnswer(params) {
+// function pickAnswer(params) {
 
-}
+// }
 
-function kpscore(params) {
+// function kpscore(params) {
 
-}
+// }
 
-function writeHighScore()
+// function writeHighScore() {
 
-create and
+// }
