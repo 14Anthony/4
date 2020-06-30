@@ -5,6 +5,9 @@ const startButton = document.getElementById('start-btn');
 
 const nextButton = document.getElementById('next-btn');
 
+//Gameover button that will send people to the High score card.btn
+const GAMEOVER = document.getElementById('GAMEOVER-btn');
+
 // // question element bucket capture from the id given in the html.
 const questionContainerElement = document.getElementById('question-container')
 
@@ -78,10 +81,10 @@ const questions = [{
 ];
 
 // //create undefined variables for new and current queries to be updated.
-// let newQueries = [] these didn't work.
-// let queryIndex = [] these didn't work.
+// let newQueries = [] ; let newQueries="these didn't work.
+// let queryIndex = [] ; let nqueryIndex these didn't work.
 let shuffledQuestions, currentQuestionsIndex;
-// //Add the listening event, for a click on the start button.btn 
+// //Add the listening event, for a click on the start button send the click to startQuiz function 
 
 startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', () => {
@@ -89,10 +92,58 @@ nextButton.addEventListener('click', () => {
     nextQ()
 });
 
+//MDN EXAMPLES
+// const div = document.createElement('div');
+// div.className = 'foo';
+
+// // our starting state: <div class="foo"></div>
+// console.log(div.outerHTML);
+
+// // use the classList API to remove and add classes
+// div.classList.remove("foo");
+// div.classList.add("anotherclass");
+
+// // <div class="anotherclass"></div>
+// console.log(div.outerHTML);
+
+// // if visible is set remove it, otherwise add it
+// div.classList.toggle("visible");
+
+// // add/remove visible, depending on test conditional, i less than 10
+// div.classList.toggle("visible", i < 10 );
+
+// console.log(div.classList.contains("foo"));
+
+// // add or remove multiple classes
+// div.classList.add("foo", "bar", "baz");
+// div.classList.remove("foo", "bar", "baz");
+
+// // add or remove multiple classes using spread syntax
+// const cls = ["foo", "bar"];
+// div.classList.add(...cls); 
+// div.classList.remove(...cls);
+
+// // replace class "foo" with class "bar"
+// div.classList.replace("foo", "bar");
+
+
+function timerFormat(time) {
+    //the laregest round integer less than or equal to the result of time divided being by 60
+    const minutes = Math.floor(time / 60);
+    //seconds are the remainder of the time devided by 60
+    let seconds = time % 60;
+    //if the value of seconds is less than 10, then display seconds with a leading zero
+    if (seconds > 10) {
+        seconds = $(seconds);
+
+    }
+    return $(minutes).$(seconds);
+}
 
 function startQuiz() {
+    // sTimer()
     //     confirm button click listern thru console log.
-    console.log('let the TRIVIA BEGIN.');
+    // console.log('let the TRIVIA BEGIN.');
     //     // found on video, youtube.... using "classList" to hid the start button after click.
     startButton.classList.add('hide');
     //     // choose the questions in the array at random
@@ -113,15 +164,39 @@ function nextQ() {
     showQuestion(shuffledQuestions[currentQuestionsIndex]);
 
 }
-
+// //Syntax
+// const renderedText = htmlElement.innerText
+// htmlElement.innerText = string
+// Value
+// A DOMString representing the rendered text content of an element. If the element itself is not being rendered (e.g detached from the document or is hidden from view), the returned value is the same as the Node.textContent property.
 function showQuestion(question) {
     questionElement.innerText = question.question;
+
+    //     Syntax
+    // arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
+    // Parameters
+    // callback
+    // Function to execute on each element. It accepts between one and three arguments:
+    // currentValue
+    // The current element being processed in the array.
+    // index Optional
+    // The index currentValue in the array.
+    // array Optional
+    // The array forEach() was called upon.
+    // thisArg Optional
+    // Value to use as this when executing callback.
+    // Return value
+    // undefined.
+
     question.answers.forEach(answer => {
         const button = document.createElement('button');
         button.innerText = answer.text;
         button.classList.add('btn');
+
+        //make if correct to change check agains the correct databases, and lett the css engage...???
         if (answer.correct) {
             button.dataset.correct = answer.correct
+
         }
         button.addEventListener('click', selectAnswer);
         answerButtonsElement.appendChild(button);
@@ -131,13 +206,35 @@ function showQuestion(question) {
 };
 
 function resetState() {
+    //clear the right and wrong background to a neutral state
     clearStatusClass(document.body)
+        //hide the next button.  HOw can I move this motion to the selected buttons themselves.??????????why am i having trouble here????  You move and hide, buttons and questions, in the same way????
+
     nextButton.classList.add('hide');
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
 };
+// The event.target property can be used in order to implement event delegation.
 
+// // Make a list
+// var ul = document.createElement('ul');
+// document.body.appendChild(ul);
+
+// var li1 = document.createElement('li');
+// var li2 = document.createElement('li');
+// ul.appendChild(li1);
+// ul.appendChild(li2);
+
+// function hide(e){
+//   // e.target refers to the clicked <li> element
+//   // This is different than e.currentTarget which would refer to the parent <ul> in this context
+//   e.target.style.visibility = 'hidden';
+// }
+
+// // Attach the listener to the list
+// // It will fire when each <li> is clicked
+// ul.addEventListener('click', hide, false);
 function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
@@ -149,12 +246,25 @@ function selectAnswer(e) {
         nextButton.classList.remove('hide')
 
     } else {
-        startButton.innerText = 'RESTART';
-        startButton.classList.remove('hide');
+        GAMEOVER.classList.remove('hide');
+        GAMEOVER.innerText = 'GAME OVER';
+        GAMEOVER.addEventListener('click', ScoreCard)
+
+        questionContainerElement.classList.add('hide');
 
     } //else
     ///////////////////////////////////////////////////////////////////THIS IS WHERE I ADD IN THE INPUT CARD FOR INITIALS AND SCORES?????????????????????????????????????????????
 };
+
+function ScoreCard() {
+    let name = prompt("Please Enter your name")
+    let score = prompt("Enter your score")
+    alert(name + " Your High Score is  " + score)
+    GAMEOVER.classList.add("hide")
+    startButton.classList.remove('hide');
+    startButton.innerText = "Restart"
+
+}
 
 function setStatusClass(element, correct) {
     clearStatusClass(element)
@@ -169,20 +279,3 @@ function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
 };
-// // function timeKeeper(params) {
-
-// // }
-
-// // function timeKeeper(params) {
-
-// // }
-
-
-
-// // function kpscore(params) {
-
-// // }
-
-// // function writeHighScore() {
-
-// // }
