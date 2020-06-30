@@ -69,20 +69,8 @@ body.wrong {
     font-size: 30px
 }
 
-.base-timer {
-    position: bottom;
-    height: 15px;
-    width: 15px;
-}
-
-.base-timer__circle {
-    fill: none;
-    stroke: none;
-}
-
-.base-timer__path-elapsed {
-    stroke-width: 7px;
-    stroke: black;
+.timer {
+    align-items: relative;
 }
 
 .operation {
